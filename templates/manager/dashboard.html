@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+<div class="widget-title text-center">
+    <h3>TEAM {{request.user.teamname|upper}}</h3>
+</div>
+<br>
+<center><h3>Add player</h3>
+<hr>
+
+<form action="" method='post'>
+{% csrf_token %}
+{{form.as_p}}
+{{form.errors}}
+<input type="submit" class="btn btn-primary py-3 px-4 mr-3">
+
+</form>
+</center>
+<br>
+<hr>
+
+<div class="row">
+  <div class="col-12 title-section text-center">
+      <h1 class="heading">Players</h1>
+  </div>{% for val in playerlist%}
+  <div class="col-lg-4 mb-4">
+    
+          <div class="bg-light p-4 rounded">
+            
+              <div class="widget-body">
+                  <div class="widget-vs">
+                      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                          <div class="team-1 text-center">
+                              <img src={% static "images/logo_1.png" %} alt="Image">
+                                  <h3>{{ val.playername }}</h3>
+                              </div>
+
+
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="text-center widget-vs-contents mb-4">
+                      <h4>{{val.teamid}}</h4>
+                      <p class="mb-5">
+                        <strong class="text-white">No of matches = {{val.noofmatches}}</strong>
+                        <br>
+                        <strong class="text-primary">Batting statistics</strong>
+                          <span class="d-block">Runs scored = {{val.runsscored}}</span>
+                          <span class="d-block">Strike rate = {{val.strikerate}}</span>
+                          <span class="d-block">No of fours = {{val.nooffours}}</span>
+                          <span class="d-block">No of sixes = {{val.noofsixes}}</span>
+                          <br>
+                        <strong class="text-primary">Bowling statistics</strong>
+                        <span class="d-block">No of wickets = {{val.noofwickets}}</span>  
+                        <span class="d-block">Economy = {{val.economy}}</span>  
+                        <span class="d-block">Best bowling = {{val.bestbowling}}</span>  
+                      </p>
+                    <p>
+                        <a href="{% url 'update_players' val.playerid %}" class="btn btn-primary py-3 px-4 mr-3">Update</a>
+                        <a href="{% url 'delete_players' val.playerid %}" class="btn btn-primary py-3 px-4 mr-3">Delete</a>
+                    </p>
+
+                  </div>
+
+              </div>
+              
+          </div>
+
+          {%endfor%} 
+      </div>
+       
+  </div>
+     
+</div>
+
+
+{% comment %} <a href = {% url 'update_players' form.playerid %}> Update Player</a> {% endcomment %}
+{% endblock content %}
+
+

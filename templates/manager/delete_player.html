@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block title %}Delete Player{% endblock title %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<p>Are you sure you want to delete <strong class="text-primary">{{player}}?</strong></p>
+
+<form method='POST'>
+    {% csrf_token %}
+    <a href={% url 'add_players' %}>Cancel</a>
+    <input type='submit' name="Conf">
+
+</form>
+
+{% endblock content %}
+
+

@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+      <div class = "col-md-12">
+        <h1>Players</h1>
+            <div class="row">
+                {%for val in players%}
+                 <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{val}}</h5>
+                                <p class="card-text">Runs Scored = {{val.runsscored}}<br>
+                                        Strike Rate = {{val.strikerate}}</p>
+
+                    </div>
+                </div>
+            </div> 
+            {%end for%}
+         </div>     
+        </div>     
+    </div>     
+</div>     

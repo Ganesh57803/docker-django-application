@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+
+{% block title %}Players{% endblock title %}
+
+
+{% block content %}
+{% load static %}
+<div class="hero overlay" style="background-image: url({% static 'images/ground1.jpg' %});">
+
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-5 mx-auto text-center">
+        <h1 class="text-white"></h1>
+        <p>“If you can stay positive in a negative situation, you win.” ― Virat Kohli</p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-12 title-section text-center">
+        <h1 class="heading">Players</h1>
+    </div>{% for val in players %}
+    <div class="col-lg-4 mb-4">
+      
+            <div class="bg-light p-4 rounded">
+              
+                <div class="widget-body">
+                    <div class="widget-vs">
+                        <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                            <div class="team-1 text-center">
+                                <img src={% static "images/logo_1.png" %} alt="Image">
+                                    <h3>{{ val.playername }}</h3>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center widget-vs-contents mb-4">
+                        <h4>{{val.teamid}}</h4>
+                        <p class="mb-5">
+                          <strong class="text-white">No of matches = {{val.noofmatches}}</strong>
+                          <br>
+                          <strong class="text-primary">Batting statistics</strong>
+                            <span class="d-block">Runs scored = {{val.runsscored}}</span>
+                            <span class="d-block">Strike rate = {{val.strikerate}}</span>
+                            <span class="d-block">No of fours = {{val.nooffours}}</span>
+                            <span class="d-block">No of sixes = {{val.noofsixes}}</span>
+                            <br>
+                          <strong class="text-primary">Bowling statistics</strong>
+                          <span class="d-block">No of wickets = {{val.noofwickets}}</span>  
+                          <span class="d-block">Economy = {{val.economy}}</span>  
+                          <span class="d-block">Best bowling = {{val.bestbowling}}</span>  
+                        </p>
+                        
+
+                    </div>
+
+                </div>
+                
+            </div>
+
+            {%endfor%} 
+        </div>
+         
+    </div>
+       
+</div>
+
+
+
+ 
+{% endblock content %}
+
+
